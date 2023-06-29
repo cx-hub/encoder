@@ -1,0 +1,4 @@
+python preprocess.py -lang_src de_core_news_sm -lang_trg en_core_web_sm -share_vocab -save_data m30k_deen_shr.pkl
+python train.py -data_pkl m30k_deen_shr.pkl -embs_share_weight -proj_share_weight -no_cuda -label_smoothing -output_dir output -b 256 -warmup 128000 -epoch 400
+python translate.py -data_pkl m30k_deen_shr.pkl -model output/model.chkpt -output prediction.txt -no_cuda
+
